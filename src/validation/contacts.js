@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import { isValidObjectId } from 'mongoose';
 
 /* const { ObjectId } = require('mongodb'); */
 
@@ -40,6 +41,12 @@ export const createContactSchema = Joi.object({
       'any.only': 'Contact type must be one of [work, home, personal]',
       'any.required': 'Contact type is required',
     }),
+  userId: Joi.string().custom((value, helper) => {
+    if (value && !isValidObjectId(value)) {
+      return helper.message('User id should be a valid mongo id');
+    }
+    return true;
+  }),
 });
 
 // Схема для PATCH /contacts/:contactId (усі поля необов’язкові)
