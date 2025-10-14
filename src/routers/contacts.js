@@ -29,7 +29,7 @@ router.get(
 );
 
 router.delete(
-  '/contacts/:contactId',
+  '/:contactId',
   checkRoles(ROLES.TEACHER),
   isValidId,
   ctrlWrapper(deleteContactController),
@@ -43,7 +43,7 @@ router.post(
 );
 
 router.put(
-  '/contacts/:contactId',
+  '/:contactId',
   checkRoles(ROLES.TEACHER),
   isValidId,
   validateBody(createContactSchema),
@@ -51,7 +51,7 @@ router.put(
 );
 
 router.patch(
-  '/contacts/:contactId',
+  '/:contactId',
   checkRoles(ROLES.TEACHER, ROLES.PARENT),
   isValidId,
   validateBody(updateContactSchema),
