@@ -1,4 +1,4 @@
-import createHttpError from 'http-errors';
+/* import createHttpError from 'http-errors';
 
 import { ContactsCollection } from '../db/models/contacts.js';
 import { ROLES } from '../constants/index.js';
@@ -37,4 +37,4 @@ export const checkRoles =
     }
 
     next(createHttpError(403));
-  };
+  }; */
