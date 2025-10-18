@@ -1,11 +1,12 @@
+import { upload } from '../middlewares/multer.js';
 import { Router } from 'express';
 import { validateBody } from '../middlewares/validateBody.js';
 import { createContactSchema } from '../validation/contacts.js';
 import { updateContactSchema } from '../validation/contacts.js';
 import { isValidId } from '../middlewares/isValidId.js';
 import { authenticate } from '../middlewares/authenticate.js';
-import { checkRoles } from '../middlewares/checkRoles.js';
-import { ROLES } from '../constants/index.js';
+/* import { checkRoles } from '../middlewares/checkRoles.js'; */
+/* import { ROLES } from '../constants/index.js'; */
 
 import {
   getContactsController,
@@ -23,28 +24,30 @@ router.use(authenticate);
 router.get('/', ctrlWrapper(getContactsController));
 router.get(
   '/:contactId',
-  checkRoles(ROLES.TEACHER, ROLES.PARENT),
+  /*   checkRoles(ROLES.TEACHER, ROLES.PARENT), */
   isValidId,
   ctrlWrapper(getContactByIdController),
 );
 
 router.delete(
   '/:contactId',
-  checkRoles(ROLES.TEACHER),
+  /*   checkRoles(ROLES.TEACHER), */
   isValidId,
   ctrlWrapper(deleteContactController),
 );
 
 router.post(
-  '/contacts',
-  checkRoles(ROLES.TEACHER),
+  '/',
+  /*   checkRoles(ROLES.TEACHER), */
+  upload.single('photo'),
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
 );
 
 router.put(
   '/:contactId',
-  checkRoles(ROLES.TEACHER),
+  /*   checkRoles(ROLES.TEACHER), */
+  upload.single('photo'),
   isValidId,
   validateBody(createContactSchema),
   ctrlWrapper(upsertContactController),
@@ -52,10 +55,13 @@ router.put(
 
 router.patch(
   '/:contactId',
-  checkRoles(ROLES.TEACHER, ROLES.PARENT),
+  /*   checkRoles(ROLES.TEACHER, ROLES.PARENT), */
+  upload.single('photo'),
   isValidId,
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
 );
 
 export default router;
+
+/* ************************** */

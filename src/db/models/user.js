@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { ROLES } from '../../constants/index.js';
+/* import { ROLES } from '../../constants/index.js'; */
 const usersSchema = new Schema({
   name: {
     type: String,
@@ -23,11 +23,11 @@ const usersSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  role: {
+  /*   role: {
     type: String,
     enum: [ROLES.TEACHER, ROLES.PARENT],
     default: ROLES.PARENT,
-  },
+  }, */
 });
 
 usersSchema.pre('save', function (next) {
