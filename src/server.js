@@ -10,7 +10,7 @@ import { getEnvVar } from './utils/getEnvVar.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 /* import { getAllContacts, getContactById } from './services/contacts.js'; */
-
+import { swaggerDocs } from './middlewares/swaggerDocs.js';
 export const setupServer = () => {
   const PORT = Number(getEnvVar('PORT', '3000'));
   const app = express();
@@ -77,4 +77,5 @@ export const setupServer = () => {
     console.log(`Server is running on port ${PORT}`);
   });
   app.use('/uploads', express.static(UPLOAD_DIR));
+  app.use('/api-docs', swaggerDocs());
 };

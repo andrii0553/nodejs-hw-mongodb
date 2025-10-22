@@ -1,0 +1,11 @@
+type: object
+required:
+  - token
+  - newPassword
+properties:
+  token:
+    type: string
+    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGVmNjEzZmJjNzZiMjE0YWQ3YmMxYzgiLCJlbWFpbCI6ImJheWRhazA1NTNAZ21haWwuY29tIiwiaWF0IjoxNzYwODk0MzUwLCJleHAiOjE3NjA4OTQ2NTB9.Y-ens89dy9F-eCV2Xxp7wv4Yvs2xehJn1ZrrBU2ySZU
+  newPassword:
+    type: string
+    example: password2536
