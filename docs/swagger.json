@@ -216,7 +216,7 @@
                   },
                   "email": {
                     "type": "string",
-                    "example": "john.doe@example.com"
+                    "example": "ivan@example.com"
                   },
                   "photo": {
                     "type": "string",
